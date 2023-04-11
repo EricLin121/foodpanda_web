@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  <!-- Load icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+                .center{
+                    display: flex;
+                    left: 1%;
+                    height: 50px;
+                    text-indent : 1em ;
+                    line-height: 50px;
+
+                }
+
+                .fixedBox2{
+                    width:100%;
+                    position: fixed;
+                    top:0px;
+                    background-image: url(http://127.0.0.1:8080/imgs/allwhite.png); 
+                    background-repeat:no-repeat; 
+                    background-size:cover;
+                    cursor:pointer;
+                }
+            </style>
+  <title>註冊</title>
+</head>
+<script th:inline="javascript" th:if="${session.msg != null}">
+    var msg = [[${session.msg}]];
+    alert(msg);
+</script>
+<body>
+    
+     <div class="row fixedBox2" style="margin-bottom: -12px; z-index: 9;" >
+            
+            <div class="col-lg-3 mb-3  center ">
+                <div><a href="/98"><img th:src="'http://127.0.0.1:8080/imgs/Foodpanda_log.png'"  width="55%"></a></div>
+            </div>
+
+            <div class="col-lg-7 mb-3 " style="border-right-style:inset ; border-right-style:inset ;">
+            </div>
+            
+            <div th:if = "${session.loginConfirm == null or session.loginConfirm == false}"  class="col-lg-1 mb-3  " style="border-right-style:inset ; line-height: 50px;">
+                <div class="input-group ">
+                    <a href="/login">
+                        <img  th:src="'http://127.0.0.1:8080/imgs/account2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">登入 </span>
+                    </a>
+                </div>
+            </div>
+            <div th:if = "${session.loginConfirm == true}" class="col-lg-1 mb-3  " style="border-right-style:inset ; line-height: 50px;">
+                <a href="/logout">
+                    <img  th:src="'http://127.0.0.1:8080/imgs/account2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">登出 </span>
+                </a>
+            </div>
+            <div class="col-lg-1 mb-3 " >
+                <div class="input-group ">
+                    <a href="/cart"><img  th:src="'http://127.0.0.1:8080/imgs/bag2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">購物車 </span></a>
+                </div>
+            </div>
+
+        </div>
+    
+    
+    
+<div class="container" style="position: absolute; top: 5rem; left: 25rem;">
+  <div class="row pt-5 align-self-center">
+
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header" style="background-color:#d60665; color: white;">
+          <h3 class="h6 text-uppercase mb-0 text-center">註冊</h3>
+        </div>
+        <div class="card-body align-self-center">
+          <form action="/auth-register" method="post">
+            <div class="input-group">
+              <p class="font-weight-bold mr-2 mt-2">帳號:</p>
+              <input class="form-control col-lg-10 " name="email" placeholder="請輸入帳號...">
+            </div>
+
+            <div class="input-group">
+              <p class="font-weight-bold mr-2 mt-2">密碼:</p>
+              <input class="form-control col-lg-10 " name="password" placeholder="請輸入密碼...">
+            </div>
+            <div class="input-group">
+              <p class="font-weight-bold mt-2 mr-2">確認密碼:</p>
+              <input class="form-control col-lg-10" name="confirm-password" placeholder="再次確認密碼...">
+            </div>
+            <div>
+              <input type="submit" class="btn btn-success form-control col-lg-3 pull-right ml-1" style="background-color:#d60665; " value="確認">
+              <a href="/login" class="mt-2 pull-right">回登入</a>
+            </div>
+          </form>
+        </div> <!-- card body-->
+      </div><!-- end of card -->
+    </div><!-- column -->
+  </div><!-- row -->
+</div><!-- container -->
+</body>
+
+</html>
+
