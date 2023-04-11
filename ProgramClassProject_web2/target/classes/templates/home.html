@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <!-- Load icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="icon" href='http://127.0.0.1:8080/imgs/panda.png'type="image/x-icon">
+            <title>FoodPanda</title>
+            <style type="text/css">
+                #div1{
+                    width:26%;
+                    height:100% auto;
+                    position:fixed;
+                    right: 0;
+                    top:0px;
+                }
+
+                .fixedBox{
+                    width:26%;
+                    position: fixed;
+                    right: 0;
+                    top:65px;
+                }
+                .fixedBox2{
+                    width:100%;
+                    position: fixed;
+                    top:0px;
+                    background-image: url(http://127.0.0.1:8080/imgs/allwhite.png); 
+                    background-repeat:no-repeat; 
+                    background-size:cover;
+                    cursor:pointer;
+                }
+                #hr
+                {
+                    background-color:;
+                    color:#C80000;
+                    -webkit-transform:rotate(90deg);
+                    position:absolute;
+                    left:130px;
+                    border:2px;
+                }
+
+                a:hover {
+                    // 設定滑鼠移經的連結
+
+                    text-decoration: underline;
+                    background-color: #FFFFFF;
+                    color: #d80665;
+
+                }
+
+                .divcolor {
+                    color: rgba(71, 73, 75, 0.741);
+                }
+
+                .back1 {
+                    background-color: rgba(82, 76, 76, 0.08);
+                }
+
+                .position1 {
+                    text-indent: 5em;
+                }
+                .position2{
+
+                }
+                .center{
+                    display: flex;
+                    left: 1%;
+                    height: 50px;
+                    text-indent : 1em ;
+                    line-height: 50px;
+                    border-right-style:inset ;
+                }
+
+            </style>
+
+    </head>
+    <body>
+
+        <div class="row fixedBox2" style="margin-bottom: -12px; z-index: 9;" >
+            <div class="col-lg-3 mb-3  center ">
+                <div><a href="/98"><img th:src="'http://127.0.0.1:8080/imgs/Foodpanda_log.png'"  width="55%"></a></div>
+            </div>
+
+            <div class="col-lg-4 mb-3 " style="border-right-style:inset ;">
+                <div class="input-group ">
+                    <span style="line-height: 50px; font-size: 1px; color: lightslategray; ">送到: </span>
+                    <select name="customer_address" class="form-control "style="top: 5px; left: 5px;" >
+                        <option selected>811高雄市楠梓區卓越路2號-男子宿舍B棟</option>
+                        <option>811高雄市楠梓區卓越路2號-女子宿舍</option>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-3 " style="border-right-style:inset ; ">
+                <div class="input-group ">
+                    <span style="line-height: 50px; font-size: 1px; color: lightslategray; ">時間: </span>
+                    <select name="" class="form-control "style="top: 5px; left: 5px;" >
+                        <option selected>週一23日,12:30</option>
+                        <option>週一23日,13:00</option>
+                        <option>週一23日,13:30</option>
+                    </select>
+                </div>
+            </div>
+            <div th:if = "${session.loginConfirm == null or session.loginConfirm == false}"  class="col-lg-1 mb-3  " style="border-right-style:inset ; line-height: 50px;">
+                <div class="input-group ">
+                    <a href="/login">
+                        <img  th:src="'http://127.0.0.1:8080/imgs/account2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">登入 </span>
+                    </a>
+                </div>
+                </div>
+                <div th:if = "${session.loginConfirm == true}" class="col-lg-1 mb-3  " style="border-right-style:inset ; line-height: 50px;">
+                    <a href="/logout">
+                        <img  th:src="'http://127.0.0.1:8080/imgs/account2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">登出 </span>
+                    </a>
+                </div>
+
+            
+            <div class="col-lg-1 mb-3 " >
+                <div class="input-group ">
+                    <a href="/cart"><img  th:src="'http://127.0.0.1:8080/imgs/bag2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">購物車 </span></a>
+                </div>
+            </div>
+
+        </div>
+        <div style="z-index: 8;">
+            <img th:src="'http://127.0.0.1:8080/imgs/firstPage.png'" width="75%">        
+        </div>
+        <article style="z-index: 7;">
+            <div class="row">
+                <div class="col-lg-9 mb-2 back1 position1">
+                    <h2><b>麥當勞(小範ㄟ店)</b></h2>
+                    <div class="divcolor">
+                        <h5>⭐4.8/5</h5>
+                    </div>
+                    <div class="divcolor">
+                        <h5>$$$ 漢堡 美式 買一送一</h5>
+                    </div>
+                    <!-- query criteria  card -->
+                </div>
+                <div class="col-lg-9 mb-2 position1">
+
+                    <div class="" style="word-spacing:30px">
+                        <form action="/searchProductByCate" class="form-group">
+                            <div class="input-group" >
+                            </div>
+                        </form>
+
+
+                    </div><!-- card body -->
+
+                    </article>
+                    <aside style="z-index: 6;">
+                </div><!-- column -->
+                <div class="col-lg-9 mb-2 position1 back1">
+                    <br>
+                </div>
+                <div class="container">
+                    <!-- show product -->
+                    <div class="col-lg-9 mb-2">
+                        <div id="menuDisplay">
+                        </div>
+
+                    </div> <!-- product list column -->
+
+                    <!-- 過濾條件 -->
+                    <div class="col-lg-3 mb-2">
+
+                        <div class="fixedBox">
+
+                            <!-- query criteria  card -->
+                            <div class="col-lg-12 mb-2">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="h6 text-uppercase mb-0">篩選條件</h3>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <!-- Search form -->
+                                                <form action="/searchProductByName" class="form-group">
+                                                    <div class="input-group mb-2">
+
+                                                        <input type="search" name="name" class="form-control"
+                                                               placeholder="名稱關鍵字"/>
+                                                        <button type="submit" class="btn btn-primary"  style="background-color:#d60665; ">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <!-- Search form -->
+                                                <form th:action="@{/searchProductByPrice}" class="form-group">
+                                                    <div class="input-group mb-2">
+
+                                                        <input type="search" name="price" class="form-control"
+                                                               placeholder="單價低於..."/>
+
+                                                        <button type="submit" class="btn btn-primary"  style="background-color:#d60665; ">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <!-- 種類 -->
+                                                <form action="/searchProductByCate" class="form-group">
+                                                    <div class="input-group">
+                                                        <select name="category" class="form-control">
+                                                            <option selected>漢堡</option>
+                                                            <option>點心</option>
+                                                            <option>飲料</option>
+                                                        </select>
+
+                                                        <button type="submit" class="btn btn-primary" style="background-color:#d60665; ">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+
+                                                    </div>
+
+                                                </form>
+                                            </div><!-- column -->
+
+                                        </div> <!-- row -->
+                                    </div><!-- card body -->
+                                </div><!-- card -->
+
+                            </div><!-- column -->
+                            <!-- query criteria area -->
+
+                            <!--cart  content -->
+                            <div class="col-lg-12 mb-2">
+                                <div class="card" >
+                                    <div class="card-header">
+                                        <h3 class="h6 text-uppercase mb-0">購物車</h3>
+                                    </div>
+                                    <div class="card-body" style=" height: 10rem ; overflow-y:  auto; border-bottom-style:inset ;">
+
+                                        <div id="cartContent" class="text-right" style="height: 20rem ;">
+
+                                        </div>
+                                    </div><!-- card body -->
+                                    <div id="cartContentSum" class="card-body text-right" style="height: 5rem ;">
+
+                                    </div>
+                                    <div >
+                                        <input type="button" value="結帳" onclick="location.href = '/check'" style="width: 80%; height: 3rem; position:relative; left: 2.3rem; background-color:#d60665; color: white; ">
+                                    </div>
+                                    <br>
+                                        <br>
+                                            </div><!-- card -->
+
+                                            </div><!-- column -->
+                                            <!-- cart  content -->
+
+                                            </div><!-- row in right column -->
+                                            </div><!-- 過濾條件 column -->
+
+
+                                            </div><!-- row in right column -->
+                                            </div><!-- right column -->
+
+                                            </div> <!-- row -->
+                                            </div><!-- container -->
+                                            </aside>                    
+                                            </body>
+                                            </html>
+
+                                            <script>
+
+                                                // 字串格式函數 先載入 讓後面的程式可以使用
+                                                //Customize the String.format()
+                                                //reference: https://www.cnblogs.com/taoweiji/p/3260883.html
+
+                                                // let result = "{0}----{1}".format("xx","yy")
+                                                String.prototype.format = function () {
+                                                var result = this;
+                                                if (arguments.length == 0)
+                                                        return null;
+                                                for (var i = 0; i < arguments.length; i++) {
+                                                var re = new RegExp('\\{' + (i) + '\\}', 'gm');
+                                                result = result.replace(re, arguments[i]);
+                                                }
+                                                return result;
+                                                };
+                                                // Another alternative way
+                                                // let result = String.format("{0}  {1}", "Apple","Pineapple")
+                                                String.format = function () {
+                                                if (arguments.length == 0)
+                                                        return null;
+                                                var str = arguments[0];
+                                                for (var i = 1; i < arguments.length; i++) {
+                                                var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+                                                str = str.replace(re, arguments[i]);
+                                                }
+                                                return str;
+                                                };</script>
+
+
+                                            <script th:inline="javascript">
+
+                                                let products = [[${products}]];
+                                                //console.log(products);
+
+                                                // 顯示產品項目
+                                                const new_div = document.createElement('div');
+                                                new_div.className = 'row'; //要成為這樣: <div class="row"></div>
+
+                                                for (let i = 0; i < products.length; i++) {
+
+                                                let html_snippet = `
+
+                                                                        <div class="col-md-3 col-sm-4 mt-2 mb-2">
+                                                                            <a href="#">
+                                                                                <img height="100" width="120" class="rounded mb-md-0" src="http://127.0.0.1:8080/imgs/{0}">
+                                                                            </a>
+
+                                                                            <h5>{1} <br>
+                                                                             $ {2}</h5>
+        
+                                                                            <form  action="/addToCart"  method="POST" class="form-group">
+                                                                                <div class="input-group">
+                                                                                        <select name="quantity" class="form-control">
+                                                                                            <option>1</option>
+                                                                                            <option>2</option>
+                                                                                            <option>3</option>
+                                                                                            <option>4</option>
+                                                                                            <option>5</option>
+                                                                                        </select>
+                                                                                        <button type="submit" class="btn btn-warning">+</button>
+                                                                                        <input type="hidden" name="prod_id" value={3} />
+                                                                                </div>
+                                                                            </form>
+        
+                                                                        </div>`;
+                                                //填入資料
+                                                html_snippet = html_snippet.format(products[i].photo, products[i].name, products[i].price, products[i].product_id);
+                                                new_div.innerHTML += html_snippet;
+                                                }
+
+                                                // 一個大區塊附加上去
+                                                document.getElementById('menuDisplay').appendChild(new_div);
+                                                // 顯示 購物內容與總價
+                                                let items = [[${session.cart
+                                                }
+                                                ]];
+                                                const cartContent = document.getElementById('cartContent');
+                                                let sum = 0;
+                                                let snippet = "";
+                                                for (let i = 0; i < items.length; i++) {
+                                                let elem = String.format('<p>{0}  ${1}x{2}', items[i].product_name, items[i].product_price, items[i].quantity);
+                                                //let elem = '<p>{0}  ${1}x{2}'.format(items[i].product_name, items[i].product_price, items[i].quantity);
+                                                sum += items[i].product_price * items[i].quantity;
+                                                snippet += elem;
+                                                }
+                                                $('#cartContent').append(snippet);
+                                                $('#cartContentSum').append("<h4>總金額: $" + sum + "<h4>");
+
+                                            </script>

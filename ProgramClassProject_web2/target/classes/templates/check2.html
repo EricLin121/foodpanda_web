@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"   xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="icon" href='http://127.0.0.1:8080/imgs/panda.png'type="image/x-icon">
+        <title>Products</title>
+        <style>
+            .center{
+                display: flex;
+                left: 1%;
+                height: 50px;
+                text-indent : 1em ;
+                line-height: 50px;
+
+            }
+
+            .fixedBox2{
+                width:100%;
+                position: fixed;
+                top:0px;
+                background-image: url(http://127.0.0.1:8080/imgs/allwhite.png); 
+                background-repeat:no-repeat; 
+                background-size:cover;
+                cursor:pointer;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="row fixedBox2" style="margin-bottom: -12px;  z-index:9;">
+            <div class="col-lg-3 mb-3  center ">
+                <div><a href="/98"><img th:src="'http://127.0.0.1:8080/imgs/Foodpanda_log.png'"  width="55%"></a></div>
+            </div>
+
+            <div class="col-lg-7 mb-3 " style="border-right-style:inset ; border-right-style:inset ;">
+
+            </div>
+            <div th:if = "${session.loginConfirm == null or session.loginConfirm == false}"  class="col-lg-1 mb-3  " style="border-right-style:inset ; line-height: 50px;">
+                <div class="input-group " >
+                    <a href="/login">
+                        <img  th:src="'http://127.0.0.1:8080/imgs/account2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">登入 </span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-1 mb-3 " >
+                <div class="input-group ">
+                    <a href="/cart"><img  th:src="'http://127.0.0.1:8080/imgs/bag2.png'" ><span style="line-height: 50px; font-size: 1px; color: lightslategray; ">購物車 </span></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="container" style="z-index:8;  position: absolute; top: 4rem; left: 20rem;"  >
+
+            <div class="row" style="position: absolute; left: 10rem;">
+
+                <div class="col-md-12 mb-2" >
+                    <img  th:src="'http://127.0.0.1:8080/imgs/tenor.gif'" >
+                </div>
+
+                <!-- column -->
+                <div class="col-md-8 mb-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="h6 text-uppercase mb-0">購物清單資訊</h3>
+                        </div>
+                        <div class="card-body">
+
+                            <table border="0" class = "table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>品項</th>
+                                        <th>單價</th>
+                                        <th>數量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item:${session.cart}">
+                                        <td th:text="${item.product_name}"></td>
+                                        <td th:text="${item.product_price}"></td>
+                                        <td th:text="${item.quantity}"></td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <!-- 如果總金額變數為0，顯示購物車內無資料! -->
+                            <h2 th:text="${session.sum} !=0 ?'總金額:$'+${session.sum} : '外送員準備中!'"></h2>
+
+                        </div><!-- end of cardbody -->
+                    </div><!-- end of card -->
+                </div><!-- end of column -->
+            </div> <!-- end of row -->
+        </div><!-- end of container -->
+    </body>
+</html>
