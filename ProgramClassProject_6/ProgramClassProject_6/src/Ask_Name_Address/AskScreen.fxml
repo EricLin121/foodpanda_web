@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="321.0" stylesheets="@../css/bootstrap3.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ask_Name_Address.AskScreenController">
+   <children>
+      <TextField fx:id="cus_name" layoutX="119.0" layoutY="86.0" prefHeight="32.0" prefWidth="165.0" />
+      <Label layoutX="32.0" layoutY="91.0" prefHeight="23.0" prefWidth="87.0" text="訂購人姓名">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="138.0" prefHeight="23.0" prefWidth="87.0" text="送達目的地">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cus_Address" layoutX="119.0" layoutY="133.0" prefHeight="32.0" prefWidth="165.0" />
+      <Button layoutX="19.0" layoutY="337.0" mnemonicParsing="false" onAction="#check2" prefHeight="37.0" prefWidth="283.0" style="-fx-background-color: #d60665;" styleClass="success" text="請下訂單" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label fx:id="PriceOnButton" layoutX="246.0" layoutY="341.0" prefHeight="23.0" prefWidth="56.0" text="\$" textFill="WHITE" />
+      <CheckBox fx:id="contactless" layoutX="32.0" layoutY="283.0" mnemonicParsing="false" selected="true" text="防疫取餐" />
+      <Separator layoutX="19.0" layoutY="224.0" prefHeight="3.0" prefWidth="265.0" />
+      <CheckBox fx:id="cutlery" layoutX="32.0" layoutY="249.0" mnemonicParsing="false" text="免洗餐具" />
+      <ImageView fitHeight="92.0" fitWidth="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs_M/panda.PNG" />
+         </image>
+      </ImageView>
+      <TextField fx:id="cus_Phone" layoutX="119.0" layoutY="180.0" prefHeight="32.0" prefWidth="165.0" />
+      <Label layoutX="32.0" layoutY="184.0" prefHeight="23.0" prefWidth="87.0" text="訂購人電話">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="display2" layoutX="114.0" layoutY="245.0" prefHeight="76.0" prefWidth="176.0" />
+   </children>
+</AnchorPane>
